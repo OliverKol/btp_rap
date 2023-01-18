@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service Definition für Mitarbeiter'
+define service ZUI_C_MITARBEITER_M {
+  expose ZC_MITARBEITER_M as MitarbeiterProcessor;
+}

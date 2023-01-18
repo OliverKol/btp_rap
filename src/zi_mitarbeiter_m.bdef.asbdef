@@ -1,0 +1,24 @@
+managed implementation in class zbp_i_mitarbeiter_m unique;
+
+define behavior for ZI_MITARBEITER_M //alias <alias_name>
+persistent table zmitarbeiter
+lock master
+
+{
+  field ( readonly ) mitarbeiterid;
+
+  field ( mandatory ) anrede, geburtsdatum, nachname, vorname;
+
+  create;
+  update;
+  delete;
+
+  action ( features : instance ) eingliedern result [1] $self;
+
+  // validations
+  validation validateOrt on save { field postleitzahl, ort; }
+
+  // determination
+  determination CalculateMitarbeiterId on modify
+  { create; }
+}
